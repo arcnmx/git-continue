@@ -1,0 +1,21 @@
+= git-continue
+
+Automagic `git rebase --continue` for the various states of git.
+
+== example
+
+[source,bash]
+----
+git merge blah # <1>
+# fix conflicts...
+git continue # <2>
+git continue --abort # <3>
+
+git cherry-pick blah # <4>
+git continue --skip # <5>
+----
+<1> perform an action that causes git to enter a conflict resolution state or other similar modes
+<2> equivalent to `git merge --continue`
+<3> alternatives to the `--continue` flag are supported
+<4> `rebase`, `cherry-pick`, and other commands are also supported
+<5> as mentioned in <3>
