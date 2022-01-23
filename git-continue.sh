@@ -2,10 +2,14 @@
 set -eu
 
 REPO=$(git rev-parse --git-dir)
-FLAG=${1---continue}
+FLAG=--continue
+if [[ $# -gt 0 ]]; then
+	FLAG="$1"
+	shift
+fi
 if [[ -e "$REPO/BISECT_LOG" ]]; then
 	SUBCOMMAND=bisect
-	if [[ ${1-} = bad ]]; then
+	if [[ ${FLAG} = bad ]]; then
 		shift
 		FLAG=bad
 	else
